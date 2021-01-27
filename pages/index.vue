@@ -1,6 +1,6 @@
 <template>
   <Container>
-    Something
+    <Header />
   </Container>
 </template>
 
