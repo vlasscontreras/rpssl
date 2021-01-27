@@ -30,7 +30,16 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    // https://google-fonts.nuxtjs.org/
+    ['@nuxtjs/google-fonts', {
+      families: {
+        'Barlow+Semi+Condensed': {
+          wght: [600, 700]
+        }
+      },
+      display: 'swap'
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
