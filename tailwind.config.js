@@ -21,22 +21,24 @@ module.exports = {
     fontFamily: {
       sans: 'var(--font-base)'
     },
-    colors: {
-      'background-end': 'var(--color-background-end)',
-      'background-start': 'var(--color-background-start)',
-      'cyan-end': 'var(--color-cyan-end)',
-      'cyan-start': 'var(--color-cyan-start)',
-      'header-outline': 'var(--color-header-outline)',
-      'lizard-end': 'var(--color-lizard-end)',
-      'lizard-start': 'var(--color-lizard-start)',
-      'paper-end': 'var(--color-paper-end)',
-      'paper-start': 'var(--color-paper-start)',
-      'rock-end': 'var(--color-rock-end)',
-      'rock-start': 'var(--color-rock-start)',
-      'scissors-end': 'var(--color-scissors-end)',
-      'scissors-start': 'var(--color-scissors-start)',
-      dark: 'var(--color-text-dark)',
-      score: 'var(--color-text-score)'
+    extend: {
+      colors: {
+        'background-end': 'var(--color-background-end)',
+        'background-start': 'var(--color-background-start)',
+        'cyan-end': 'var(--color-cyan-end)',
+        'cyan-start': 'var(--color-cyan-start)',
+        'header-outline': 'var(--color-header-outline)',
+        'lizard-end': 'var(--color-lizard-end)',
+        'lizard-start': 'var(--color-lizard-start)',
+        'paper-end': 'var(--color-paper-end)',
+        'paper-start': 'var(--color-paper-start)',
+        'rock-end': 'var(--color-rock-end)',
+        'rock-start': 'var(--color-rock-start)',
+        'scissors-end': 'var(--color-scissors-end)',
+        'scissors-start': 'var(--color-scissors-start)',
+        dark: 'var(--color-text-dark)',
+        score: 'var(--color-text-score)'
+      }
     }
   },
   variants: {},
