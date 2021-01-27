@@ -18,7 +18,11 @@ module.exports = {
     ]
   },
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: 'var(--font-base)'
+      }
+    }
   },
   variants: {},
   plugins: []
