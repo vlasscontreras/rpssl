@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <Container>
     Something
-  </div>
+  </Container>
 </template>
 
 <script lang="ts">
