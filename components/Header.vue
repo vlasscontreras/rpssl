@@ -10,11 +10,22 @@
       </div>
 
       <div class="col">
-        <Score :score="12" />
+        <Score :score="rpssl.score" />
       </div>
     </div>
   </header>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { mapState } from 'vuex'
+
+export default Vue.extend({
+  computed: {
+    ...mapState(['rpssl'])
+  }
+})
+</script>
 
 <style scoped>
 .heading {
