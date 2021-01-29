@@ -28,14 +28,12 @@ export default Vue.extend({
     }
   },
 
-  data () {
-    return {
-      shape: this.getShapeSpec(this.type)
-    }
-  },
-
   computed: {
-    classname () {
+    shape (): ShapeSpec|null {
+      return this.getShapeSpec(this.type)
+    },
+
+    classname (): string {
       return classnames(
         'inline-block',
         'p-3',
@@ -47,14 +45,12 @@ export default Vue.extend({
         'sm:h-36',
         'bg-gradient-to-t',
         'outer',
-        this.shape.classname
+        this?.shape?.classname
       )
     }
   },
 
   methods: {
-    classnames,
-
     /**
      * Get the shape spec object for the given type
      *
