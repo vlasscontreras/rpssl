@@ -1,5 +1,5 @@
 <template>
-  <div :class="classname">
+  <div :class="classname" @click="pick">
     <div class="rounded-full bg-white flex h-full items-center justify-center w-full inner">
       <component :is="shape.component" />
     </div>
@@ -66,36 +66,48 @@ export default Vue.extend({
         case 'rock':
           return {
             component: Rock,
+            id: 0,
             classname
           }
 
         case 'paper':
           return {
             component: Paper,
+            id: 1,
             classname
           }
 
         case 'scissors':
           return {
             component: Scissors,
-            classname
-          }
-
-        case 'lizard':
-          return {
-            component: Lizard,
+            id: 2,
             classname
           }
 
         case 'spock':
           return {
             component: Spock,
+            id: 3,
             classname: 'from-cyan-start to-cyan-end'
+          }
+
+        case 'lizard':
+          return {
+            component: Lizard,
+            id: 4,
+            classname
           }
 
         default:
           return null
       }
+    },
+
+    /**
+     * Pick the shape and send the shape ID
+     */
+    pick (): void {
+      this.$emit('onPicked', this?.shape?.id)
     }
   }
 })
