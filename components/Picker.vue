@@ -3,22 +3,34 @@
     <Pentagon class="mx-auto max-w-full" />
 
     <div class="shape-wrapper absolute">
-      <Shape type="scissors" />
+      <Shape class="cursor-pointer" type="scissors" @onPicked="pickPlayerShape" />
     </div>
     <div class="shape-wrapper absolute">
-      <Shape type="spock" />
+      <Shape class="cursor-pointer" type="spock" @onPicked="pickPlayerShape" />
     </div>
     <div class="shape-wrapper absolute">
-      <Shape type="paper" />
+      <Shape class="cursor-pointer" type="paper" @onPicked="pickPlayerShape" />
     </div>
     <div class="shape-wrapper absolute">
-      <Shape type="lizard" />
+      <Shape class="cursor-pointer" type="lizard" @onPicked="pickPlayerShape" />
     </div>
     <div class="shape-wrapper absolute">
-      <Shape type="rock" />
+      <Shape class="cursor-pointer" type="rock" @onPicked="pickPlayerShape" />
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  methods: {
+    pickPlayerShape (id: number) {
+      this.$store.commit('rpssl/setPlayerShape', id)
+    }
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 .picker {
