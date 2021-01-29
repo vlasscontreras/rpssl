@@ -7,20 +7,25 @@
  * 3: Spock
  * 4: Lizard
  *
+ * @link http://www.samkass.com/theories/RPSSL.html
+ *
  * @param {number} playerOne Player 1 option.
  * @param {number} playerTwo Player 2 option.
- * @return {number}          0 if tie, 1 if player one, 2 if player two.
+ * @return {number}
  */
 export function winner (playerOne: number, playerTwo: number): number {
-  // distance = (n + a - b) % n
-  const difference = (5 + playerOne - playerTwo) % 5
-
   if (playerOne === playerTwo) {
-    return 0
-  } else if (difference % 2 === 1) {
-    return 1
+    return 0 // Tie.
+  }
+
+  // difference = (n + a - b) % n
+  const n = 5
+  const difference = (n + playerOne - playerTwo) % n
+
+  if (difference % 2 === 1) {
+    return 1 // Player 1.
   } else if (difference % 2 === 0) {
-    return 2
+    return 2 // Player 2.
   }
 
   return 0
