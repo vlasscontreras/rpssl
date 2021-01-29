@@ -10,7 +10,7 @@
       </div>
 
       <div class="col">
-        <Score score="12" />
+        <Score :score="12" />
       </div>
     </div>
   </header>
