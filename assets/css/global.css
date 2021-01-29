@@ -28,3 +28,14 @@ body {
       var(--color-background-end) 100%
     );
 }
+
+/* Transitions */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
