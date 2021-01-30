@@ -18,7 +18,7 @@ import Vue from 'vue'
 export default Vue.extend({
   methods: {
     close () {
-      this.$emit('onClose')
+      this.$emit('close')
     }
   }
 })

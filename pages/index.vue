@@ -1,32 +1,31 @@
 <template>
   <Container class="pb-10">
     <Header />
-    <Picker />
+    <Picker v-if="!(rpssl.playerShape && rpssl.cpuShape)" @picked="picked" />
 
-    <button class="border-2 border-header-outline hover:bg-white hover:border-white hover:text-dark focus:outline-none px-8 py-2 rounded-lg text-white text-xl transition-all uppercase table mx-auto sm:mr-0" @click="showRulesModal">
+    <Button @click="showRulesModal">
       Rules
-    </button>
+    </Button>
 
     <transition name="fade">
-      <Modal v-if="rulesModal" @onClose="hideRulesModal">
-        <h4 class="uppercase text-dark text-3xl font-bold mb-4">
-          Rules
-        </h4>
-
-        <Instructions class="mx-auto" />
-      </Modal>
+      <RulesModal v-if="rulesModal" @close="hideRulesModal" />
     </transition>
   </Container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex'
 
 export default Vue.extend({
   data () {
     return {
       rulesModal: false
     }
+  },
+
+  computed: {
+    ...mapState(['rpssl'])
   },
 
   methods: {
@@ -36,6 +35,10 @@ export default Vue.extend({
 
     hideRulesModal () {
       this.rulesModal = false
+    },
+
+    picked (id: number) {
+      console.log(id)
     }
   }
 })

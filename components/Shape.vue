@@ -107,7 +107,7 @@ export default Vue.extend({
      * Pick the shape and send the shape ID
      */
     pick (): void {
-      this.$emit('onPicked', this?.shape?.id)
+      this.$emit('picked', this?.shape?.id)
     }
   }
 })
