@@ -1,5 +1,6 @@
 export type ShapeSpec = {
-  component: any,
   id: Number,
-  classname: String,
+  name?: String,
+  component?: any,
+  classname?: String,
 }

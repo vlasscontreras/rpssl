@@ -40,6 +40,8 @@ module.exports = {
         'lizard-start': 'var(--color-lizard-start)',
         'paper-end': 'var(--color-paper-end)',
         'paper-start': 'var(--color-paper-start)',
+        'spock-end': 'var(--color-cyan-end)',
+        'spock-start': 'var(--color-cyan-start)',
         'rock-end': 'var(--color-rock-end)',
         'rock-start': 'var(--color-rock-start)',
         'scissors-end': 'var(--color-scissors-end)',

@@ -1,3 +1,31 @@
+import { ShapeSpec } from "@/types"
+
+/**
+ * Game shapes
+ */
+export const shapes: Array<ShapeSpec> = [
+  {
+    name: 'scissors',
+    id: 2
+  },
+  {
+    name: 'spock',
+    id: 3
+  },
+  {
+    name: 'paper',
+    id: 1
+  },
+  {
+    name: 'lizard',
+    id: 4
+  },
+  {
+    name: 'rock',
+    id: 0
+  }
+]
+
 /**
  * RPSLS Algorithm
  *

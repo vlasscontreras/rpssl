@@ -11,11 +11,8 @@ import Vue from 'vue'
 import classnames from 'classnames'
 
 import { ShapeSpec } from '@/types'
-import Rock from '@/components/shapes/Rock.vue'
-import Paper from '@/components/shapes/Paper.vue'
-import Scissors from '@/components/shapes/Scissors.vue'
-import Lizard from '@/components/shapes/Lizard.vue'
-import Spock from '@/components/shapes/Spock.vue'
+import { shapes } from '@/lib/game'
+import { capitalize } from '@/lib/util'
 
 export default Vue.extend({
   props: {
@@ -60,47 +57,19 @@ export default Vue.extend({
      * @return {ShapeSpec|null}
      */
     getShapeSpec (shape: String): ShapeSpec|null {
-      const classname = `from-${shape}-start to-${shape}-end`
+      const shapeSpecs = shapes.filter(shapeSpec => shapeSpec.name === shape)
 
-      switch (shape) {
-        case 'rock':
-          return {
-            component: Rock,
-            id: 0,
-            classname
-          }
-
-        case 'paper':
-          return {
-            component: Paper,
-            id: 1,
-            classname
-          }
-
-        case 'scissors':
-          return {
-            component: Scissors,
-            id: 2,
-            classname
-          }
-
-        case 'spock':
-          return {
-            component: Spock,
-            id: 3,
-            classname: 'from-cyan-start to-cyan-end'
-          }
-
-        case 'lizard':
-          return {
-            component: Lizard,
-            id: 4,
-            classname
-          }
-
-        default:
-          return null
+      if (!shapeSpecs.length) {
+        return null
       }
+
+      // Dynamic shape specification
+      const shapeName = capitalize(shape)
+
+      shapeSpecs[0].classname = `from-${shape}-start to-${shape}-end`
+      shapeSpecs[0].component = () => import(`@/components/shapes/${shapeName}.vue`)
+
+      return shapeSpecs[0]
     },
 
     /**
