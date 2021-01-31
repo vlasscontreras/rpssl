@@ -1,7 +1,7 @@
 <template>
   <div :class="classname" @click="pick">
-    <div class="rounded-full bg-white flex h-full items-center justify-center w-full inner">
-      <component :is="shape.component" />
+    <div class="rounded-full bg-white flex h-full items-center justify-center w-full inner transition-shadow">
+      <component :is="shape.component" class="w-3/5 h-3/5" />
     </div>
   </div>
 </template>
@@ -32,18 +32,12 @@ export default Vue.extend({
 
     classname (): string {
       return classnames(
+        'shape',
         'inline-block',
-        'p-3',
-        'sm:p-4',
         'rounded-full',
-        'w-24',
-        'xs:w-28',
-        'sm:w-36',
-        'h-24',
-        'xs:h-28',
-        'sm:h-36',
         'bg-gradient-to-t',
         'outer',
+        'transition-shadow',
         this?.shape?.classname
       )
     }
@@ -81,12 +75,26 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
-.outer {
-  box-shadow: inset 0 -0.375em rgb(0, 0, 0, 0.2);
+<style lang="scss" scoped>
+.shape {
+  padding: 0.675em;
+  height: 6.25em;
+  width: 6.25em;
 }
 
-.inner {
-  box-shadow: inset 0 0.375em rgb(0, 0, 0, 0.15);
+.outer {
+  box-shadow: inset 0 -0.375em rgb(0, 0, 0, 0.2);
+
+  .inner {
+    box-shadow: inset 0 0.375em rgb(0, 0, 0, 0.15);
+  }
+
+  &:hover {
+    box-shadow: inset 0 -0.15em rgb(0, 0, 0, 0.2);
+
+    .inner {
+      box-shadow: inset 0 0.15em rgb(0, 0, 0, 0.15);
+    }
+  }
 }
 </style>
