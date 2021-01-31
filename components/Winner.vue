@@ -1,14 +1,16 @@
 <template>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 lg:gap-16 items-start md:items-center text-center">
     <div class="shape flex flex-col md:flex-col-reverse items-center order-1">
-      <Shape :type="playerOneShape.name" class="mb-4 md:mb-0" />
+      <Shape :type="playerOneShape.name" class="mb-4 md:mb-0 sm:text-2xl md:text-3xl lg:text-5xl" :winner="winner === 1" />
+
       <h2 class="text-white uppercase text-lg md:text-2xl md:mb-10">
         You Picked
       </h2>
     </div>
 
     <div class="shape flex flex-col md:flex-col-reverse items-center order-2 md:order-3">
-      <Shape :type="playerTwoShape.name" class="mb-4 md:mb-0" />
+      <Shape :type="playerTwoShape.name" class="mb-4 md:mb-0 sm:text-2xl md:text-3xl lg:text-5xl" :winner="winner === 2" />
+
       <h2 class="text-white uppercase text-lg md:text-2xl md:mb-10">
         The House Picked
       </h2>

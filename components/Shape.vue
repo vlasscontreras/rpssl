@@ -22,6 +22,14 @@ export default Vue.extend({
       validator (value) {
         return ['rock', 'paper', 'scissors', 'lizard', 'spock'].includes(value)
       }
+    },
+    winner: {
+      type: Boolean,
+      default: false
+    },
+    hoverable: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -38,7 +46,11 @@ export default Vue.extend({
         'bg-gradient-to-t',
         'outer',
         'transition-shadow',
-        this?.shape?.classname
+        this?.shape?.classname,
+        {
+          hoverable: this.hoverable,
+          winner: this.winner
+        }
       )
     }
   },
@@ -89,12 +101,39 @@ export default Vue.extend({
     box-shadow: inset 0 0.375em rgb(0, 0, 0, 0.15);
   }
 
-  &:hover {
+  &.hoverable:hover {
     box-shadow: inset 0 -0.15em rgb(0, 0, 0, 0.2);
 
     .inner {
       box-shadow: inset 0 0.15em rgb(0, 0, 0, 0.15);
     }
+  }
+}
+
+.winner {
+  animation: winner 4s infinite ease;
+}
+
+@keyframes winner {
+  0% {
+    box-shadow:
+      0 0 0 1em rgba(#fff, 2.5%),
+      0 0 0 2em rgba(#fff, 2.5%),
+      0 0 0 3em rgba(#fff, 2.5%);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 1.5em rgba(#fff, 2.5%),
+      0 0 0 3.5em rgba(#fff, 2.5%),
+      0 0 0 5.5em rgba(#fff, 2.5%);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 1em rgba(#fff, 2.5%),
+      0 0 0 2em rgba(#fff, 2.5%),
+      0 0 0 3em rgba(#fff, 2.5%);
   }
 }
 </style>

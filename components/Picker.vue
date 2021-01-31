@@ -3,7 +3,7 @@
     <Pentagon class="mx-auto max-w-full" />
 
     <div v-for="shape in shapes" :key="shape.name" class="shape-wrapper absolute">
-      <Shape class="cursor-pointer sm:text-xl md:text-2xl" :type="shape.name" @picked="pickPlayerShape" />
+      <Shape class="cursor-pointer sm:text-xl md:text-2xl" :type="shape.name" hoverable @picked="pickPlayerShape" />
     </div>
   </div>
 </template>
