@@ -1,7 +1,7 @@
 <template>
-  <div :class="classname" @click="pick">
-    <div class="rounded-full bg-white flex h-full items-center justify-center w-full inner transition-shadow">
-      <component :is="shape.component" class="w-3/5 h-3/5" />
+  <div :class="outerClass" @click="pick">
+    <div :class="innerClass">
+      <component :is="shape.component" v-if="shape" class="w-3/5 h-3/5" />
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default Vue.extend({
   props: {
     type: {
       type: String,
-      required: true,
+      default: null,
       validator (value) {
         return ['rock', 'paper', 'scissors', 'lizard', 'spock'].includes(value)
       }
@@ -33,12 +33,18 @@ export default Vue.extend({
     }
   },
 
+  data () {
+    return {
+      initialized: false
+    }
+  },
+
   computed: {
     shape (): ShapeSpec|null {
       return this.getShapeSpec(this.type)
     },
 
-    classname (): string {
+    outerClass (): string {
       return classnames(
         'shape',
         'inline-block',
@@ -48,14 +54,39 @@ export default Vue.extend({
         'transition-shadow',
         this?.shape?.classname,
         {
+          initialized: this.initialized,
           hoverable: this.hoverable,
-          winner: this.winner
+          winner: this.winner,
+          'no-shape': !this.shape
+        }
+      )
+    },
+
+    innerClass (): string {
+      return classnames(
+        'rounded-full',
+        'flex',
+        'h-full',
+        'items-center',
+        'justify-center',
+        'w-full',
+        'inner',
+        'transition-shadow',
+        {
+          'bg-white': this.shape,
+          'bg-black bg-opacity-10': !this.shape
         }
       )
     }
   },
 
+  mounted () {
+    this.initialized = true
+  },
+
   methods: {
+    classnames,
+
     /**
      * Get the shape spec object for the given type
      *
@@ -92,9 +123,15 @@ export default Vue.extend({
   padding: 0.675em;
   height: 6.25em;
   width: 6.25em;
+  transform: scale(0);
+  transition: transform 0.15s cubic-bezier(0.6, 0.6, 0.25, 1.45);
+
+  &.initialized {
+    transform: scale(1);
+  }
 }
 
-.outer {
+.outer:not(.no-shape) {
   box-shadow: inset 0 -0.375em rgb(0, 0, 0, 0.2);
 
   .inner {

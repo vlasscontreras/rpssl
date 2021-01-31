@@ -6,7 +6,7 @@
     <Picker v-if="playerHasNotPicked" class="my-12 mx-auto" @picked="picked" />
 
     <!-- Winner Announcer -->
-    <Winner v-else class="my-20" :player-one="rpssl.playerOneShape" :player-two="rpssl.playerTwoShape" />
+    <Winner v-else class="mx-auto my-20 max-w-4xl" :player-one="rpssl.playerOneShape" :player-two="rpssl.playerTwoShape" />
 
     <!-- Rules -->
     <Button class="mx-auto sm:mr-0 table" @click="showRulesModal">
