@@ -47,6 +47,7 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import classnames from 'classnames'
+import { MetaInfo } from 'vue-meta'
 
 import { winner, getShapeSpecById } from '@/lib/game'
 import { ShapeSpec } from '@/types'
@@ -66,6 +67,21 @@ export default Vue.extend({
   data () {
     return {
       winner: null as Number|null
+    }
+  },
+
+  head (): MetaInfo {
+    const title = 'Rock Paper Scissors Spock Lizard'
+    let winner = ''
+
+    if (this.winner === 1) {
+      winner = 'You Win! | '
+    } else if (this.winner === 2) {
+      winner = 'You Lose! | '
+    }
+
+    return {
+      title: winner + title
     }
   },
 
