@@ -6,23 +6,28 @@ import { ShapeSpec } from "@/types"
 export const shapes: Array<ShapeSpec> = [
   {
     name: 'scissors',
-    id: 2
+    id: 2,
+    classname: 'from-scissors-start to-scissors-end'
   },
   {
     name: 'spock',
-    id: 3
+    id: 3,
+    classname: 'from-spock-start to-spock-end'
   },
   {
     name: 'paper',
-    id: 1
+    id: 1,
+    classname: 'from-paper-start to-paper-end'
   },
   {
     name: 'lizard',
-    id: 4
+    id: 4,
+    classname: 'from-lizard-start to-lizard-end'
   },
   {
     name: 'rock',
-    id: 0
+    id: 0,
+    classname: 'from-rock-start to-rock-end'
   }
 ]
 

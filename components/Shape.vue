@@ -66,7 +66,6 @@ export default Vue.extend({
       // Dynamic shape specification
       const shapeName = capitalize(shape)
 
-      shapeSpecs.classname = `from-${shape}-start to-${shape}-end`
       shapeSpecs.component = () => import(`@/components/shapes/${shapeName}.vue`)
 
       return shapeSpecs
