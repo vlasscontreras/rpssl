@@ -27,7 +27,37 @@ export const shapes: Array<ShapeSpec> = [
 ]
 
 /**
- * RPSLS Algorithm
+ * Get shape spec by name
+ *
+ * @param {String} name Shape name
+ */
+export function getShapeSpecByName (name: String): ShapeSpec|null {
+  const shape = shapes.filter(shape => shape.name === name)
+
+  if (!shape) {
+    return null
+  }
+
+  return shape[0]
+}
+
+/**
+ * Get shape spec by ID
+ *
+ * @param {Number} id Shape ID
+ */
+export function getShapeSpecById (id: Number): ShapeSpec|null {
+  const shape = shapes.filter(shape => shape.id === id)
+
+  if (!shape) {
+    return null
+  }
+
+  return shape[0]
+}
+
+/**
+ * RPSSL Algorithm
  *
  * 0: Rock
  * 1: Paper
