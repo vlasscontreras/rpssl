@@ -9,6 +9,7 @@ module.exports = {
     content: [
       'components/**/*.vue',
       'layouts/**/*.vue',
+      'lib/**/*.ts',
       'pages/**/*.vue',
       'plugins/**/*.js',
       'nuxt.config.js',
