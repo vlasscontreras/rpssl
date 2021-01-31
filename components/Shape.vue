@@ -11,7 +11,7 @@ import Vue from 'vue'
 import classnames from 'classnames'
 
 import { ShapeSpec } from '@/types'
-import { shapes } from '@/lib/game'
+import { getShapeSpecByName } from '@/lib/game'
 import { capitalize } from '@/lib/util'
 
 export default Vue.extend({
@@ -57,19 +57,19 @@ export default Vue.extend({
      * @return {ShapeSpec|null}
      */
     getShapeSpec (shape: String): ShapeSpec|null {
-      const shapeSpecs = shapes.filter(shapeSpec => shapeSpec.name === shape)
+      const shapeSpecs = getShapeSpecByName(shape)
 
-      if (!shapeSpecs.length) {
+      if (!shapeSpecs) {
         return null
       }
 
       // Dynamic shape specification
       const shapeName = capitalize(shape)
 
-      shapeSpecs[0].classname = `from-${shape}-start to-${shape}-end`
-      shapeSpecs[0].component = () => import(`@/components/shapes/${shapeName}.vue`)
+      shapeSpecs.classname = `from-${shape}-start to-${shape}-end`
+      shapeSpecs.component = () => import(`@/components/shapes/${shapeName}.vue`)
 
-      return shapeSpecs[0]
+      return shapeSpecs
     },
 
     /**

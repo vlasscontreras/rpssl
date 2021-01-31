@@ -25,12 +25,9 @@ export default Vue.extend({
       return classnames(
         'border-2',
         'focus:outline-none',
-        'mx-auto',
         'px-8',
         'py-2',
         'rounded-lg',
-        'sm:mr-0',
-        'table',
         'text-xl',
         'transition-all',
         'uppercase',

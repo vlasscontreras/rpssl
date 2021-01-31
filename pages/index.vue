@@ -1,9 +1,15 @@
 <template>
   <Container class="pb-10">
     <Header />
-    <Picker v-if="!(rpssl.playerShape && rpssl.cpuShape)" @picked="picked" />
 
-    <Button @click="showRulesModal">
+    <!-- Shape Picker -->
+    <Picker v-if="playerHasNotPicked" class="my-12 mx-auto" @picked="picked" />
+
+    <!-- Winner Announcer -->
+    <Winner v-else class="my-20" :player-one="rpssl.playerOneShape" :player-two="rpssl.playerTwoShape" />
+
+    <!-- Rules -->
+    <Button class="mx-auto sm:mr-0 table" @click="showRulesModal">
       Rules
     </Button>
 
@@ -17,6 +23,8 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 
+import { getRandomInt } from '@/lib/game'
+
 export default Vue.extend({
   data () {
     return {
@@ -25,7 +33,11 @@ export default Vue.extend({
   },
 
   computed: {
-    ...mapState(['rpssl'])
+    ...mapState(['rpssl']),
+
+    playerHasNotPicked (): boolean {
+      return this.rpssl.playerOneShape === null && this.rpssl.playerTwoShape === null
+    }
   },
 
   methods: {
@@ -38,7 +50,11 @@ export default Vue.extend({
     },
 
     picked (id: number) {
-      console.log(id)
+      // The player 2 will be the CPU
+      const playerTwoShape = getRandomInt(0, 5)
+
+      this.$store.commit('rpssl/setPlayerOneShape', id)
+      this.$store.commit('rpssl/setPlayerTwoShape', playerTwoShape)
     }
   }
 })

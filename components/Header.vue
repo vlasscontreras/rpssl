@@ -23,6 +23,14 @@ import { mapState } from 'vuex'
 export default Vue.extend({
   computed: {
     ...mapState(['rpssl'])
+  },
+
+  mounted () {
+    if (process.browser) {
+      const currentScore = Number(localStorage.getItem('rpssl.score'))
+
+      this.$store.commit('rpssl/setScore', currentScore)
+    }
   }
 })
 </script>

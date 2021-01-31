@@ -1,5 +1,5 @@
 <template>
-  <div class="picker text-center px-10 py-16 relative max-w-md mx-auto my-12">
+  <div class="picker text-center px-10 py-16 relative max-w-md">
     <Pentagon class="mx-auto max-w-full" />
 
     <div v-for="shape in shapes" :key="shape.name" class="shape-wrapper absolute">
