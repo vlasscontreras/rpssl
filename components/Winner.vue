@@ -51,6 +51,7 @@ import { MetaInfo } from 'vue-meta'
 
 import { winner, getShapeSpecById } from '@/lib/game'
 import { ShapeSpec } from '@/types'
+import { title } from '@/lib/meta'
 
 export default Vue.extend({
   props: {
@@ -71,7 +72,6 @@ export default Vue.extend({
   },
 
   head (): MetaInfo {
-    const title = 'Rock Paper Scissors Spock Lizard'
     let winner = ''
 
     if (this.winner === 1) {

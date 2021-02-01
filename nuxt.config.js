@@ -1,15 +1,22 @@
+import { title, shortTitle, description } from './lib/meta'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'rockpaperscissors',
+    title,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: description },
+      { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#141539' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1f3756' }
+    ],
+    bodyAttrs: {
+      class: 'dark'
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -51,8 +58,20 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icon: {
+      source: '/icon.png',
+      fileName: 'icon.png'
+    },
+    meta: {
+      theme_color: '#141539'
+    },
     manifest: {
-      lang: 'en'
+      lang: 'en',
+      name: title,
+      short_name: shortTitle,
+      description,
+      background_color: '#141539',
+      display: 'standalone'
     }
   },
 

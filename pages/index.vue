@@ -32,12 +32,6 @@ export default Vue.extend({
     }
   },
 
-  head () {
-    return {
-      title: 'Rock Paper Scissors Spock Lizard'
-    }
-  },
-
   computed: {
     ...mapState(['rpssl']),
 
